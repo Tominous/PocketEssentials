@@ -33,28 +33,21 @@ public class FlyCommand extends Command {
                     Player affectedPlayer = this.plugin.getServer().getPlayer( arguments[0] );
 
                     for ( Player players : this.plugin.getServer().getOnlinePlayers().values() ) {
-                        if ( ! arguments[0].equals( players.getName() ) ) {
+                        if ( ! arguments[0].equalsIgnoreCase( players.getName() ) ) {
                             commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-playerNotFound-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+                            return false;
                         }
                     }
 
-                    if ( ! affectedPlayer.getAllowFlight() ) {
-                        affectedPlayer.setAllowFlight( true );
-                        commandSender.sendMessage( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ), affectedPlayer.getDisplayName() ) );
-                    } else {
-                        affectedPlayer.setAllowFlight( false );
-                        commandSender.sendMessage( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-fail-" + this.plugin.getLocaleConfig().getDefaultLocale() ), affectedPlayer.getDisplayName() ) );
-                    }
+                    affectedPlayer.setAllowFlight( ! affectedPlayer.getAllowFlight() );
+                    commandSender.sendMessage( ! affectedPlayer.getAllowFlight() ? String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-fail-" + this.plugin.getLocaleConfig().getDefaultLocale() ), affectedPlayer.getDisplayName() ) : String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ), affectedPlayer.getDisplayName() ) );
+
                     PlayerFlyStatusChangeEvent playerFlyStatusChangeEvent = new PlayerFlyStatusChangeEvent( affectedPlayer, affectedPlayer.getAllowFlight() );
                     this.plugin.getServer().getPluginManager().callEvent( playerFlyStatusChangeEvent );
                 } else {
-                    if ( ! ((Player) commandSender).getAllowFlight() ) {
-                        ((Player) commandSender).setAllowFlight( true );
-                        commandSender.sendMessage( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ), ((Player) commandSender).getDisplayName() ) );
-                    } else {
-                        ((Player) commandSender).setAllowFlight( false );
-                        commandSender.sendMessage( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-fail-" + this.plugin.getLocaleConfig().getDefaultLocale() ), ((Player) commandSender).getDisplayName() ) );
-                    }
+                    ((Player) commandSender).setAllowFlight( ! ((Player) commandSender).getAllowFlight() );
+                    commandSender.sendMessage( ! ((Player) commandSender).getAllowFlight() ? String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-fail-" + this.plugin.getLocaleConfig().getDefaultLocale() ), ((Player) commandSender).getDisplayName() ) : String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-fly-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ), ((Player) commandSender).getDisplayName() ) );
+
                     PlayerFlyStatusChangeEvent playerFlyStatusChangeEvent = new PlayerFlyStatusChangeEvent( ((Player) commandSender), ((Player) commandSender).getAllowFlight() );
                     this.plugin.getServer().getPluginManager().callEvent( playerFlyStatusChangeEvent );
                 }
@@ -62,8 +55,6 @@ public class FlyCommand extends Command {
                 commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
                 this.plugin.getLogger().info( TextFormat.RED + commandSender.getName() + TextFormat.DARK_RED + " does not have an access to this command." );
             }
-        } else {
-            commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-playerNotFound-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
         }
         return false;
     }
