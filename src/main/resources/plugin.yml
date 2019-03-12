@@ -1,4 +1,4 @@
-name: NukkitEssentials
-main: NukkitEssentials
+name: PocketEssentials
+main: com.github.kaooot.nukkit.plugin.essentials.PocketEssentials
 api: 1.0.0
 version: 1.0.0

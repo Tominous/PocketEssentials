@@ -3,8 +3,10 @@ package com.github.kaooot.nukkit.plugin.essentials;
 import cn.nukkit.plugin.PluginBase;
 import com.github.kaooot.nukkit.plugin.essentials.command.FlyCommand;
 import com.github.kaooot.nukkit.plugin.essentials.config.LocaleConfig;
+import com.github.kaooot.nukkit.plugin.essentials.config.PocketUserManager;
 import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerCommandPreprocessListener;
 import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerInvalidMoveListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerJoinListener;
 import lombok.Getter;
 
 /*
@@ -17,6 +19,8 @@ public class PocketEssentials extends PluginBase {
 
     @Getter
     private LocaleConfig localeConfig;
+    @Getter
+    private PocketUserManager pocketUserManager;
 
     /**
      * This method will be executed when the plugin is running / the server starts
@@ -24,6 +28,7 @@ public class PocketEssentials extends PluginBase {
     @Override
     public void onEnable() {
         this.localeConfig = new LocaleConfig( this );
+        this.pocketUserManager = new PocketUserManager( this );
 
         this.registerListeners();
         this.registerCommands();
@@ -43,9 +48,10 @@ public class PocketEssentials extends PluginBase {
     private void registerListeners() {
         this.getServer().getPluginManager().registerEvents( new PlayerInvalidMoveListener(), this );
         this.getServer().getPluginManager().registerEvents( new PlayerCommandPreprocessListener( this ), this );
+        this.getServer().getPluginManager().registerEvents( new PlayerJoinListener( this ), this );
     }
 
-    // We use this private method to register Commands classes
+    // We use this private method to register Command classes
     private void registerCommands() {
         this.getServer().getCommandMap().register( "fly", new FlyCommand( this, "fly" ) );
     }
