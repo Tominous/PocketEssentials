@@ -28,6 +28,7 @@ public class LocaleConfig extends PocketConfig {
         this.config.set( "Translations.messages.message-onEnable-en", TextFormat.GREEN + "ENABLED" );
         this.config.set( "Translations.messages.message-onDisable-en", TextFormat.RED + "DISABLED" );
         this.config.set( "Translations.messages.message-command-noPerm-en", TextFormat.DARK_RED + "You are not allowed to use this command." );
+        this.config.set( "Translations.messages.message-command-noPerm-console-en", TextFormat.RED + "%s" + TextFormat.DARK_RED + " does not have an access to this command." );
         this.config.set( "Translations.messages.message-command-playerNotFound-en", TextFormat.RED + "Error: " + TextFormat.DARK_RED + "Player not found." );
         this.config.set( "Translations.messages.message-command-fly-success-en", TextFormat.GOLD + "You have " + TextFormat.WHITE + "activated " + TextFormat.GOLD + "the flight mode at " + TextFormat.RESET + "%s" );
         this.config.set( "Translations.messages.message-command-fly-fail-en", TextFormat.GOLD + "You have " + TextFormat.WHITE + "deactivated " + TextFormat.GOLD + "the flight mode at " + TextFormat.RESET + "%s" );

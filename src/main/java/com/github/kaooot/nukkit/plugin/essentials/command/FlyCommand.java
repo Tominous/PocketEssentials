@@ -53,7 +53,7 @@ public class FlyCommand extends Command {
                 }
             } else {
                 commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
-                this.plugin.getLogger().info( TextFormat.RED + commandSender.getName() + TextFormat.DARK_RED + " does not have an access to this command." );
+                this.plugin.getLogger().info( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-console-" + this.plugin.getLocaleConfig().getDefaultLocale() ), commandSender.getName() ) );
             }
         }
         return false;
