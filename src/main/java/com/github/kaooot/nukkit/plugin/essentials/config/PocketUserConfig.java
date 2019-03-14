@@ -25,6 +25,7 @@ public class PocketUserConfig extends PocketConfig {
     @Override
     protected void setDefaults() {
         this.config.set( ".money", 0 );
+        this.config.set( ".godMode", false );
         this.saveConfig();
     }
 
