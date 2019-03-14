@@ -35,10 +35,18 @@ public class PocketUserConfig extends PocketConfig {
 
     /**
      * Get the money value from the user config
-     * @return a fresh money value
+     * @return a fresh double value
      */
     public double getMoney() {
         return this.config.getDouble( ".money" );
+    }
+
+    /**
+     * Get the godMode value from the user config
+     * @return a fresh boolean
+     */
+    public boolean isGodMode() {
+        return this.config.getBoolean( ".godMode" );
     }
 
     /**
@@ -47,6 +55,15 @@ public class PocketUserConfig extends PocketConfig {
      */
     public void setMoney( double money ) {
         this.config.set( ".money", money );
+        this.saveConfig();
+    }
+
+    /**
+     * Change the godMode value from the user config
+     * @param godMode which should be changed
+     */
+    public void setGodMode( boolean godMode ) {
+        this.config.set( ".godMode", godMode );
         this.saveConfig();
     }
 }

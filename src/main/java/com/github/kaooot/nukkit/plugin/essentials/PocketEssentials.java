@@ -2,6 +2,7 @@ package com.github.kaooot.nukkit.plugin.essentials;
 
 import cn.nukkit.plugin.PluginBase;
 import com.github.kaooot.nukkit.plugin.essentials.command.FlyCommand;
+import com.github.kaooot.nukkit.plugin.essentials.command.GodModeCommand;
 import com.github.kaooot.nukkit.plugin.essentials.config.LocaleConfig;
 import com.github.kaooot.nukkit.plugin.essentials.config.PocketUserManager;
 import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerCommandPreprocessListener;
@@ -56,5 +57,6 @@ public class PocketEssentials extends PluginBase {
     // We use this private method to register Command classes
     private void registerCommands() {
         this.getServer().getCommandMap().register( "fly", new FlyCommand( this, "fly" ) );
+        this.getServer().getCommandMap().register( "god", new GodModeCommand( this, "god" ) );
     }
 }

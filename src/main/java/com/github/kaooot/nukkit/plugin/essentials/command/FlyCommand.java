@@ -4,7 +4,6 @@ import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.utils.TextFormat;
 import com.github.kaooot.nukkit.plugin.api.event.PlayerFlyStatusChangeEvent;
 import com.github.kaooot.nukkit.plugin.essentials.PocketEssentials;
 
@@ -12,6 +11,7 @@ public class FlyCommand extends Command {
 
     private PocketEssentials plugin;
 
+    @Deprecated
     public FlyCommand( PocketEssentials plugin, String name ) {
         super( name );
         this.plugin = plugin;
