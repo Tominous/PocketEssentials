@@ -18,6 +18,8 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin( PlayerJoinEvent event ) {
         Player player = event.getPlayer();
 
+        event.setJoinMessage( "" );
+
         this.plugin.getPocketUserManager().registerPlayer( player );
     }
 }

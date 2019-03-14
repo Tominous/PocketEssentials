@@ -7,6 +7,7 @@ import com.github.kaooot.nukkit.plugin.essentials.config.PocketUserManager;
 import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerCommandPreprocessListener;
 import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerInvalidMoveListener;
 import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerJoinListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerQuitListener;
 import lombok.Getter;
 
 /*
@@ -49,6 +50,7 @@ public class PocketEssentials extends PluginBase {
         this.getServer().getPluginManager().registerEvents( new PlayerInvalidMoveListener(), this );
         this.getServer().getPluginManager().registerEvents( new PlayerCommandPreprocessListener( this ), this );
         this.getServer().getPluginManager().registerEvents( new PlayerJoinListener( this ), this );
+        this.getServer().getPluginManager().registerEvents( new PlayerQuitListener(), this );
     }
 
     // We use this private method to register Command classes
