@@ -5,10 +5,11 @@ import com.github.kaooot.nukkit.plugin.essentials.command.FlyCommand;
 import com.github.kaooot.nukkit.plugin.essentials.command.GodModeCommand;
 import com.github.kaooot.nukkit.plugin.essentials.config.LocaleConfig;
 import com.github.kaooot.nukkit.plugin.essentials.config.PocketUserManager;
-import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerCommandPreprocessListener;
-import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerInvalidMoveListener;
-import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerJoinListener;
-import com.github.kaooot.nukkit.plugin.essentials.listener.PlayerQuitListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.entity.EntityDamageListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerCommandPreprocessListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerInvalidMoveListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerJoinListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerQuitListener;
 import lombok.Getter;
 
 /*
@@ -52,11 +53,12 @@ public class PocketEssentials extends PluginBase {
         this.getServer().getPluginManager().registerEvents( new PlayerCommandPreprocessListener( this ), this );
         this.getServer().getPluginManager().registerEvents( new PlayerJoinListener( this ), this );
         this.getServer().getPluginManager().registerEvents( new PlayerQuitListener(), this );
+        this.getServer().getPluginManager().registerEvents( new EntityDamageListener( this ), this );
     }
 
     // We use this private method to register Command classes
     private void registerCommands() {
-        this.getServer().getCommandMap().register( "fly", new FlyCommand( this, "fly" ) );
-        this.getServer().getCommandMap().register( "god", new GodModeCommand( this, "god" ) );
+        this.getServer().getCommandMap().register( "fly", new FlyCommand( this, "fly", "Take off, and soar!" ) );
+        this.getServer().getCommandMap().register( "god", new GodModeCommand( this, "god", "Enables your godly powers." ) );
     }
 }

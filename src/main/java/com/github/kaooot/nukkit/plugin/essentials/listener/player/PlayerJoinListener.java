@@ -1,4 +1,4 @@
-package com.github.kaooot.nukkit.plugin.essentials.listener;
+package com.github.kaooot.nukkit.plugin.essentials.listener.player;
 
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;

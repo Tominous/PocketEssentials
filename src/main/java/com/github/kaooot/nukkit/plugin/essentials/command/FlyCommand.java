@@ -11,11 +11,10 @@ public class FlyCommand extends Command {
 
     private PocketEssentials plugin;
 
-    @Deprecated
-    public FlyCommand( PocketEssentials plugin, String name ) {
+    public FlyCommand( PocketEssentials plugin, String name, String description ) {
         super( name );
         this.plugin = plugin;
-        this.description = "Take off, and soar!";
+        this.description = description;
         this.commandParameters.clear();
         this.commandParameters.put( "fly", new CommandParameter[] {
                 new CommandParameter( "affected", true, CommandParameter.ARG_TYPE_TARGET )

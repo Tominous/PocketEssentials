@@ -32,6 +32,8 @@ public class LocaleConfig extends PocketConfig {
         this.config.set( "Translations.messages.message-command-playerNotFound-en", TextFormat.RED + "Error: " + TextFormat.DARK_RED + "Player not found." );
         this.config.set( "Translations.messages.message-command-fly-success-en", TextFormat.GOLD + "You have " + TextFormat.WHITE + "activated " + TextFormat.GOLD + "the flight mode at " + TextFormat.RESET + "%s" );
         this.config.set( "Translations.messages.message-command-fly-fail-en", TextFormat.GOLD + "You have " + TextFormat.WHITE + "deactivated " + TextFormat.GOLD + "the flight mode at " + TextFormat.RESET + "%s" );
+        this.config.set( "Translations.messages.message-command-godMode-success-en", TextFormat.GOLD + "Godmode " + TextFormat.RED + "enabled" );
+        this.config.set( "Translations.messages.message-command-godMode-fail-en", TextFormat.GOLD + "Godmode " + TextFormat.RED + "disabled" );
         this.saveConfig();
     }
 
