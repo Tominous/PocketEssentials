@@ -3,6 +3,7 @@ package com.github.kaooot.nukkit.plugin.essentials.command;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import com.github.kaooot.nukkit.plugin.api.event.PlayerGodModeStatusChangeEvent;
 import com.github.kaooot.nukkit.plugin.essentials.PocketEssentials;
 
 public class GodModeCommand extends Command {
@@ -25,6 +26,9 @@ public class GodModeCommand extends Command {
 
                 this.plugin.getPocketUserManager().getPocketUserConfig( uuid ).setGodMode( ! this.plugin.getPocketUserManager().getPocketUserConfig( uuid ).isGodMode() );
                 commandSender.sendMessage( ! this.plugin.getPocketUserManager().getPocketUserConfig( uuid ).isGodMode() ? this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-godMode-fail-" + this.plugin.getLocaleConfig().getDefaultLocale() ) : this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-godMode-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+
+                PlayerGodModeStatusChangeEvent playerGodModeStatusChangeEvent = new PlayerGodModeStatusChangeEvent( ((Player)commandSender), this.plugin.getPocketUserManager().getPocketUserConfig( uuid ).isGodMode() );
+                this.plugin.getServer().getPluginManager().callEvent( playerGodModeStatusChangeEvent );
             } else {
                 commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
                 this.plugin.getLogger().info( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-console-" + this.plugin.getLocaleConfig().getDefaultLocale() ), commandSender.getName() ) );
