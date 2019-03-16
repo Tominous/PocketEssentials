@@ -6,10 +6,7 @@ import com.github.kaooot.nukkit.plugin.essentials.command.GodModeCommand;
 import com.github.kaooot.nukkit.plugin.essentials.config.LocaleConfig;
 import com.github.kaooot.nukkit.plugin.essentials.config.PocketUserManager;
 import com.github.kaooot.nukkit.plugin.essentials.listener.entity.EntityDamageListener;
-import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerCommandPreprocessListener;
-import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerInvalidMoveListener;
-import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerJoinListener;
-import com.github.kaooot.nukkit.plugin.essentials.listener.player.PlayerQuitListener;
+import com.github.kaooot.nukkit.plugin.essentials.listener.player.*;
 import lombok.Getter;
 
 /*
@@ -53,6 +50,7 @@ public class PocketEssentials extends PluginBase {
         this.getServer().getPluginManager().registerEvents( new PlayerCommandPreprocessListener( this ), this );
         this.getServer().getPluginManager().registerEvents( new PlayerJoinListener( this ), this );
         this.getServer().getPluginManager().registerEvents( new PlayerQuitListener(), this );
+        this.getServer().getPluginManager().registerEvents( new PlayerFoodLevelChangeListener( this ), this );
         this.getServer().getPluginManager().registerEvents( new EntityDamageListener( this ), this );
     }
 

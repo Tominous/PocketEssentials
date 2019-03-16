@@ -1,0 +1,12 @@
+Translations:
+  defaultLocale: en
+  messages:
+    message-onEnable-en: §aENABLED
+    message-onDisable-en: §cDISABLED
+    message-command-noPerm-en: §4You are not allowed to use this command.
+    message-command-playerNotFound-en: '§cError: §4Player not found.'
+    message-command-fly-success-en: §6You have §factivated §6the flight mode at §r%s
+    message-command-fly-fail-en: §6You have §fdeactivated §6the flight mode at §r%s
+    message-command-noPerm-console-en: §c%s§4 does not have an access to this command.
+    message-command-godMode-success-en: §6Godmode §cenabled
+    message-command-godMode-fail-en: §6Godmode §cdisabled

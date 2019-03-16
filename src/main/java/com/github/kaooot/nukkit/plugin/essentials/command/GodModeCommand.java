@@ -24,6 +24,9 @@ public class GodModeCommand extends Command {
             if ( commandSender.isOp() ) {
                 String uuid = ((Player) commandSender).getUniqueId().toString();
 
+                ((Player)commandSender).setHealth( ((Player)commandSender).getMaxHealth() );
+                ((Player)commandSender).getFoodData().setLevel( ((Player)commandSender).getFoodData().getMaxLevel() );
+
                 this.plugin.getPocketUserManager().getPocketUserConfig( uuid ).setGodMode( ! this.plugin.getPocketUserManager().getPocketUserConfig( uuid ).isGodMode() );
                 commandSender.sendMessage( ! this.plugin.getPocketUserManager().getPocketUserConfig( uuid ).isGodMode() ? this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-godMode-fail-" + this.plugin.getLocaleConfig().getDefaultLocale() ) : this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-godMode-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
 
