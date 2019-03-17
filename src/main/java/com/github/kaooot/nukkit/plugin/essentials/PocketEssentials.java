@@ -1,8 +1,10 @@
 package com.github.kaooot.nukkit.plugin.essentials;
 
 import cn.nukkit.plugin.PluginBase;
+import com.github.kaooot.nukkit.plugin.essentials.command.FeedCommand;
 import com.github.kaooot.nukkit.plugin.essentials.command.FlyCommand;
 import com.github.kaooot.nukkit.plugin.essentials.command.GodModeCommand;
+import com.github.kaooot.nukkit.plugin.essentials.command.HealCommand;
 import com.github.kaooot.nukkit.plugin.essentials.config.LocaleConfig;
 import com.github.kaooot.nukkit.plugin.essentials.config.PocketUserManager;
 import com.github.kaooot.nukkit.plugin.essentials.listener.entity.EntityDamageListener;
@@ -58,5 +60,7 @@ public class PocketEssentials extends PluginBase {
     private void registerCommands() {
         this.getServer().getCommandMap().register( "fly", new FlyCommand( this, "fly", "Take off, and soar!" ) );
         this.getServer().getCommandMap().register( "god", new GodModeCommand( this, "god", "Enables your godly powers." ) );
+        this.getServer().getCommandMap().register( "feed", new FeedCommand( this, "feed", "Satisfy the hunger." ) );
+        this.getServer().getCommandMap().register( "heal", new HealCommand( this, "heal", "Heals you or the given player." ) );
     }
 }

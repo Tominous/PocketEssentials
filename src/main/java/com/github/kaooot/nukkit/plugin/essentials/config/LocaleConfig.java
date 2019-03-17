@@ -34,6 +34,10 @@ public class LocaleConfig extends PocketConfig {
         this.config.set( "Translations.messages.message-command-fly-fail-en", TextFormat.GOLD + "You have " + TextFormat.WHITE + "deactivated " + TextFormat.GOLD + "the flight mode at " + TextFormat.RESET + "%s" );
         this.config.set( "Translations.messages.message-command-godMode-success-en", TextFormat.GOLD + "Godmode " + TextFormat.RED + "enabled" );
         this.config.set( "Translations.messages.message-command-godMode-fail-en", TextFormat.GOLD + "Godmode " + TextFormat.RED + "disabled" );
+        this.config.set( "Translations.messages.message-command-feed-success-en", TextFormat.GOLD + "Your hunger was stilled." );
+        this.config.set( "Translations.messages.message-command-feed-success-other-en", TextFormat.GOLD + "You have stilled the hunger from " + TextFormat.RESET + "%s" );
+        this.config.set( "Translations.messages.message-command-heal-success-en", TextFormat.GOLD + "You were healed." );
+        this.config.set( "Translations.messages.message-command-heal-success-other-en", TextFormat.RESET + "%s" + TextFormat.GOLD + " was healed." );
         this.saveConfig();
     }
 
