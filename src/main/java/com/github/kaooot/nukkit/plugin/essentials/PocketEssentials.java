@@ -23,6 +23,8 @@ public class PocketEssentials extends PluginBase {
     private LocaleConfig localeConfig;
     @Getter
     private PocketUserManager pocketUserManager;
+    @Getter
+    private LocaleManager localeManager;
 
     /**
      * This method will be executed when the plugin is running / the server starts
@@ -30,12 +32,13 @@ public class PocketEssentials extends PluginBase {
     @Override
     public void onEnable() {
         this.localeConfig = new LocaleConfig( this );
+        this.localeManager = new LocaleManager();
         this.pocketUserManager = new PocketUserManager( this );
 
         this.registerListeners();
         this.registerCommands();
 
-        this.getLogger().info( this.localeConfig.getMessageFromConfiguration( "Translations.messages.message-onEnable-" + this.localeConfig.getDefaultLocale() ) );
+        this.getLogger().info( this.localeManager.translate( this.localeConfig.getDefaultLocale(), "message-onEnable" ) );
     }
 
     /**
@@ -43,7 +46,7 @@ public class PocketEssentials extends PluginBase {
      */
     @Override
     public void onDisable() {
-        this.getLogger().info( this.localeConfig.getMessageFromConfiguration( "Translations.messages.message-onDisable-" + this.localeConfig.getDefaultLocale() ) );
+        this.getLogger().info( this.localeManager.translate( this.localeConfig.getDefaultLocale(), "message-onDisable" ) );
     }
 
     // We use this private method to register Listener classes

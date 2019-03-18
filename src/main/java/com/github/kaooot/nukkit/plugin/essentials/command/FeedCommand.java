@@ -23,7 +23,7 @@ public class FeedCommand extends Command {
     @Override
     public boolean execute( CommandSender commandSender, String s, String[] arguments ) {
         if ( ! (commandSender instanceof Player) && arguments.length == 0 ) {
-            commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-playerNotFound-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+            commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-playerNotFound" ) );
         }
         else if ( commandSender instanceof Player ) {
             if ( commandSender.isOp() ) {
@@ -32,25 +32,25 @@ public class FeedCommand extends Command {
 
                     for ( Player players : this.plugin.getServer().getOnlinePlayers().values() ) {
                         if ( ! arguments[0].equalsIgnoreCase( players.getName() ) ) {
-                            commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-playerNotFound-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+                            commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-playerNotFound" ) );
                             return false;
                         }
                     }
 
                     if ( affectedPlayer.getFoodData().getLevel() != affectedPlayer.getFoodData().getMaxLevel() ) {
                         affectedPlayer.getFoodData().setLevel( affectedPlayer.getFoodData().getMaxLevel() );
-                        affectedPlayer.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-feed-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
-                        commandSender.sendMessage( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-feed-success-other-" + this.plugin.getLocaleConfig().getDefaultLocale() ), affectedPlayer.getDisplayName() ) );
+                        affectedPlayer.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-feed-success" ) );
+                        commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-feed-success-other", affectedPlayer.getDisplayName() ) );
                     }
                 } else {
                     if ( ((Player) commandSender).getFoodData().getLevel() != ((Player) commandSender).getFoodData().getMaxLevel() ) {
                         ((Player) commandSender).getFoodData().setLevel( ((Player) commandSender).getFoodData().getMaxLevel() );
-                        commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-feed-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+                        commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-feed-success" ) );
                     }
                 }
             } else {
-                commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
-                this.plugin.getLogger().info( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-console-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+                commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-noPerm" ) );
+                this.plugin.getLogger().info( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-noPerm-console", commandSender.getName() ) );
             }
         }
         return false;

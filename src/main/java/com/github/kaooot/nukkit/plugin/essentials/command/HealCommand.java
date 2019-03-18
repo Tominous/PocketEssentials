@@ -23,7 +23,7 @@ public class HealCommand extends Command {
     @Override
     public boolean execute( CommandSender commandSender, String s, String[] arguments ) {
         if ( ! (commandSender instanceof Player) && arguments.length == 0 ) {
-            commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-playerNotFound-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+            commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-playerNotFound" ) );
         }
         else if ( commandSender instanceof Player ) {
             if ( commandSender.isOp() ) {
@@ -32,7 +32,7 @@ public class HealCommand extends Command {
 
                     for ( Player players : this.plugin.getServer().getOnlinePlayers().values() ) {
                         if ( ! arguments[0].equalsIgnoreCase( players.getName() ) ) {
-                            commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-playerNotFound-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+                            commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-playerNotFound" ) );
                             return false;
                         }
                     }
@@ -40,19 +40,19 @@ public class HealCommand extends Command {
                     if ( affectedPlayer.getHealth() != affectedPlayer.getMaxHealth() || affectedPlayer.getFoodData().getLevel() != affectedPlayer.getFoodData().getMaxLevel() ) {
                         affectedPlayer.setHealth( affectedPlayer.getMaxHealth() );
                         affectedPlayer.getFoodData().setLevel( affectedPlayer.getFoodData().getMaxLevel() );
-                        affectedPlayer.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-heal-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
-                        commandSender.sendMessage( String.format( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-heal-success-other-" + this.plugin.getLocaleConfig().getDefaultLocale() ), affectedPlayer.getDisplayName() ) );
+                        affectedPlayer.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-heal-success" ) );
+                        commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-heal-success-other", affectedPlayer.getDisplayName() ) );
                     }
                 } else {
                     if ( ((Player) commandSender).getHealth() != ((Player) commandSender).getMaxHealth() || ((Player) commandSender).getFoodData().getLevel() != ((Player) commandSender).getFoodData().getMaxLevel() ) {
                         ((Player) commandSender).setHealth( ((Player) commandSender).getMaxHealth() );
                         ((Player) commandSender).getFoodData().setLevel( ((Player) commandSender).getFoodData().getMaxLevel() );
-                        commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-heal-success-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+                        commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-heal-success" ) );
                     }
                 }
             } else {
-                commandSender.sendMessage( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
-                this.plugin.getLogger().info( this.plugin.getLocaleConfig().getMessageFromConfiguration( "Translations.messages.message-command-noPerm-console-" + this.plugin.getLocaleConfig().getDefaultLocale() ) );
+                commandSender.sendMessage( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-noPerm" ) );
+                this.plugin.getLogger().info( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-noPerm-console", commandSender.getName() ) );
             }
         }
         return false;
