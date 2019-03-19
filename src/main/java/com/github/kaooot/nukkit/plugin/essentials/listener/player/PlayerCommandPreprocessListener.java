@@ -16,6 +16,6 @@ public class PlayerCommandPreprocessListener implements Listener {
     @EventHandler
     public void onPlayerCommandPreprocess( PlayerCommandPreprocessEvent event ) {
         // print a warn message in the console when a player is executing a command
-        this.plugin.getLogger().warning( event.getPlayer().getName() + " issued the following command: " + event.getMessage() );
+        this.plugin.getLogger().warning( this.plugin.getLocaleManager().translate( this.plugin.getLocaleConfig().getDefaultLocale(), "message-command-executed-console", event.getPlayer().getName(), event.getMessage() ) );
     }
 }
