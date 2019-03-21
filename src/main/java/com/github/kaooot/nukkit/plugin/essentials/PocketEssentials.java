@@ -25,6 +25,8 @@ public class PocketEssentials extends PluginBase {
     private PocketUserManager pocketUserManager;
     @Getter
     private LocaleManager localeManager;
+    @Getter
+    private Economy economy;
 
     /**
      * This method will be executed when the plugin is running / the server starts
@@ -34,6 +36,7 @@ public class PocketEssentials extends PluginBase {
         this.localeConfig = new LocaleConfig( this );
         this.localeManager = new LocaleManager();
         this.pocketUserManager = new PocketUserManager( this );
+        this.economy = new Economy( this );
 
         this.registerListeners();
         this.registerCommands();
